@@ -45,6 +45,22 @@ namespace CSharp8
 
             Console.WriteLine($"the last dude is {dudes[^1]}");
             Console.WriteLine($"the second-last dude is {dudes[^2]}");
+
+
+            var bookend = 1..^1;
+            var sentence = "[ hello world ]".Split(" ");
+            Console.WriteLine(string.Join(" ", sentence[bookend]));
+
+            // we hit an ArgumentOutOfRangeException
+            //Console.WriteLine(sentence[..5]);
+
+            string name1 = null!;
+            name1 ??= "sean mclemon";
+            Console.WriteLine(name1);
+
+            string name2 = "alfie";
+            name2 ??= "alfie the dog";
+            Console.WriteLine(name2);
         }
 
         static IEnumerable<string> ParseDudes()

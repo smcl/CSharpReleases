@@ -51,7 +51,23 @@ Console.WriteLine(x);
 var o = GetOrigin();
 Console.WriteLine($"origin: {o}");
 
+var namedAnon = anon with
+{
+    Name = "Jeebus"
+};
+
+Console.WriteLine(namedAnon);
+
+var xxx = new Bar { Name = "bar" };
+Console.WriteLine(GetFooName(xxx));
+
 // ------------------------------------
+
+static string GetFooName(IFoo foo)
+{
+    return foo.Name;
+}
+
 
 static Point GetOrigin()
 {
@@ -84,4 +100,18 @@ record User
     // if Name was declared like this, the project would build but fail at runtime if no `Name` prop was supplied
     // public string Name { get; set; } = default!;
     public int Age { get; set; }
+}
+
+
+
+public interface IFoo
+{
+    string Name { get; }
+}
+
+
+// huh, records can implement interfaces
+public record Bar : IFoo
+{
+    public string Name { get; init; } = "whatever";
 }
