@@ -61,6 +61,8 @@ Console.WriteLine(namedAnon);
 var xxx = new Bar { Name = "bar" };
 Console.WriteLine(GetFooName(xxx));
 
+// borrowed the example source generator from https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/
+SyntaxTreeOutputLib.SyntaxTreeOutput.Execute();
 // ------------------------------------
 
 static string GetFooName(IFoo foo)
